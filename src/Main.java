@@ -32,6 +32,7 @@ public class Main {
         }
         mapA.forEach((key, value) -> Collections.sort(value, (a, b) ->
                 a.getTime().compareTo(b.getTime())));
+        System.out.println("Пункт 4");
         mapA.forEach((key, value) -> System.out.println(key + "\n" + Arrays.toString(value.toArray())));
         System.out.println("_______________________________________________________________________________________");
         // 5 пункт
@@ -42,6 +43,7 @@ public class Main {
         // 6 пункт
         Collections.sort(allProgrammes, (a, b) ->
             a.getTime().compareTo(b.getTime()));
+        System.out.println("Пункт 6");
         System.out.println(Arrays.toString(allProgrammes.toArray()));
         System.out.println("___________________________________________________________________________________________");
         // 7 пункт
@@ -52,28 +54,35 @@ public class Main {
             for (int i = 0; i < elem.size(); ++i) {
                 Programme tmp = elem.get(i);
                 if (tmp.getTime().before(time)) {
-                    if (i != elem.size() - 1 || elem.get(i + 1).getTime().after(time)) {
+                    if (i == elem.size() - 1 || elem.get(i + 1).getTime().after(time)) {
                         now.add(tmp);
                     }
+                } else {
+                    break;
                 }
-                break;
             }
         }
+        System.out.println("Пункт 7");
         System.out.println(Arrays.toString(now.toArray()));
         System.out.println("___________________________________________________________________________________________");
         // 8 пункт
+        System.out.println("Пункт 8");
         Scanner sc = new Scanner(System.in);
         String name = sc.nextLine();
         System.out.println(Arrays.toString(allProgrammes.stream().filter((a) -> a.getProgrammeName().indexOf(name) != -1).toArray()));
         System.out.println("___________________________________________________________________________________________");
         // 9 пункт
+        System.out.println("Пункт 9");
+        String channelName1 = sc.nextLine();
+        System.out.println(Arrays.toString(now.stream().filter((a) -> a.getChannelName().equals(channelName1)).toArray()));
         System.out.println("___________________________________________________________________________________________");
         // 10 пункт
-        String channelName = sc.nextLine();
+        System.out.println("Пункт 10");
+        String channelName2 = sc.nextLine();
         BroadcastsTime t1 = new BroadcastsTime(sc.nextLine());
         BroadcastsTime t2 = new BroadcastsTime(sc.nextLine());
         System.out.println(
-                Arrays.toString(allProgrammes.stream().filter((a) -> a.getChannelName().equals(channelName) &&
+                Arrays.toString(allProgrammes.stream().filter((a) -> a.getChannelName().equals(channelName2) &&
                         a.getTime().between(t1, t2)).toArray()));
     }
 }
